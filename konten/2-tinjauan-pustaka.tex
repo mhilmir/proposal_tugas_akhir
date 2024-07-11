@@ -2,27 +2,100 @@
 
 % Ubah konten-konten berikut sesuai dengan isi dari tinjauan pustaka
 \section{Hasil penelitian/perancangan terdahulu}
-\lipsum[3]
+Beberapa penelitian/perancangan terdahulu yang relevan antara lain:
+
+\subsection{Traffic Congestion Detection Using Fixed-Wing Unmanned Aerial Vehicle (UAV) Video Streaming Based on Deep Learning}
+Penelitian ini dilakukan oleh P.W. Bhaskara dan rekan pada tahun 2020 \cite{WisnuFWDeepLearning}. Pada penelitian ini, digunakan drone berjenis \emph{Fixed Wing} yang diterbangkan menyusuri jalan, serta terpasang kamera yang menghadap ke bawah. Dalam pelaksanaanya, YOLO digunakan sebagai model \emph{deep learning} untuk mendeteksi kendaraan. Penelitian ini memiliki tujuan untuk mengembangkan sistem yang dapat mendeteksi kemacetan lalu lintas secara otomatis.
+
+\subsection{Monitoring and Surveillance of Urban Road Traffic Using Low Altitude Drone Images: A Deep Learning Approach}
+Penelitian ini dilakukan oleh H. Gupta dan O.P. Verma \cite{GuptaSurveillanceDrone}. Penelitian ini mencoba untuk melakukan perbandingan antara 4 model \emph{Deep Learning} yang digunakan untuk deteksi kendaraan. Gambar didapatkan dari drone pemantau dengan berbagai variasi ketinggian dan sudut pandang (\emph{angle}). Keempat model tersebut antara lain Faster R-CNN, SSD, YOLOv3, dan YOLOv4. Setelah dilakukan analisis terbukti YOLOv4 merupakan model yang paling efisien dan memiliki performa terbaik diantara 3 model yang lain.
+
+\subsection{Pemanfaatan Drone Pada Penelitian Keselamatan Lalu Lintas di Persimpangan}
+Penelitian yang dilakukan oleh M. Lovita dan rekan \cite{LovitaACEConference} ini berkaitan dengan drone yang digunakan untuk pemantauan di area persimpangan. Drone yang digunakan adalah jenis drone quadcopter komersial bermerek DJI Phantom 4. Perekaman dilakukan secara tegak lurus dari udara pada ketinggian tertentu dengan durasi sekitar 20 manit di saat kondisi arus lalu lintas sibuk, pertengahan, dan tidak sibuk.
+
+\subsection{Examining The Applicability of Small Quadcopter Drone for Traffic Surveillance and Roadway Incident Monitoring}
+Pada tahun 2018, J. Lee dan rekan melakukan penelitian terkait implementasi drone untuk pemantauan lalu lntas dan insiden jalan raya \cite{LeeSmallDroneSurveillance}. Drone yang digunakan berukuran kecil, serta tidak perlu pengetahuan/keterampilan profesional dalam menjalankannya. Data gambar/video ditransmisikan secara \emph{wireless} menggunakan servis jaringan 4G/LTE komersial.
 
 \section{Teori/Konsep Dasar}
+Berikut merupakan teori/konsep dasar yang dijadikan acuan dalam penelitian ini:
 
-\subsection{Hukum Newton}
+\subsection{Drone (Quadcopter)}
+Drone atau quadcopter adalah sebuah pengembangan di dunia penerbangan dimana sejatinya quadcopter adalah sebuah helicopter yang memiliki 4 buah rotor, hal ini membuat quadcopter memiliki nama lain Quadrotor. Sebuah quadcopter di dunia penerbangan termasuk ke dalam jenis Rotorcraft dimana pada jenis ini gaya mengangkat yang digunakan untuk terbang dihasilkan dari beberapa rotor yang terpasang menghadap ke atas \cite{LuukkonenQuadcopter}.
 
-% Contoh penggunaan referensi dari pustaka
-Newton pernah merumuskan \parencite{Newton1687} bahwa \lipsum[8]
-% Contoh penggunaan referensi dari persamaan
-Kemudian menjadi persamaan seperti pada persamaan \ref{eq:FirstLaw}.
+Sebuah quadcopter yang sederhana dibuat dengan empat buah rotor yang dipasang dengan formasi kotak dengan dengan posisi masing-masing rotor setara antara satu sama lain terhadap titik pusat massa dari keseluruhan sistem quadcopter. Sebuah rotor dari quadcopter terdiri dari 2 komponen utama yaitu motor dan \emph{propeller}. Pada quadcopter, motor bertugas untuk melakukan putaran, sedangkan \emph{propeller} bertugas untuk menggerakan udara dan menghasilkan gaya angkat pada quadcopter. Pada sebuah quadcopter, terdapat 2 set jenis \emph{propeller} yang dibedakan berdasarkan arah putar motornya, yaitu untuk yang berputar secara searah jarum jam (\emph{clockwise}) dan berlawanan jarum jam (\emph{counter clock-wise}) \cite{GopalakrishnanQuadcopter}. 
 
-% Contoh pembuatan persamaan
-\begin{equation}
-  % Label referensi dari persamaan yang dibuat
-  \label{eq:FirstLaw}
-  % Baris kode persamaan yang dibuat
-  \sum \mathbf{F} = 0\; \Leftrightarrow\; \frac{\mathrm{d} \mathbf{v} }{\mathrm{d}t} = 0.
-\end{equation}
+\begin{figure} [H] \centering
+  % Nama dari file gambar yang diinputkan
+  \includegraphics[scale=1]{gambar/quadcopter_koordinat.png}
+  % Keterangan gambar yang diinputkan
+  \caption{Sistem Koordinat pada Quadcopter}
+  % Label referensi dari gambar yang diinputkan
+  \label{fig:quad_coordinate}
+\end{figure}
 
-\lipsum[9]
+Quadcopter dapat terbang dan bergerak dengan cara melakukan pengontrolan gaya angkat dan torsi dengan melakukan pembedaan kecepatan putar keempat motornya. Sebuah quadcopter memiliki 3 \emph{Degree of Freedom} atau DoF yaitu \emph{Yaw}, \emph{Pitch} dan \emph{Roll}. Pergerakan pada DoF ini dilakukan dengan cara mengatur kecepatan putar masing-masing motor sesuai dengan arah gerakan quadcopter. Sementara itu, untuk melakukan terbang secara seimbang, sebuah quadcopter perlu melakukan penyeimbangan kecepatan putaran motor untuk seluruh motornya sehingga diperlukan juga masukan atau input dari sensor sebagai pembanding apakah sebuah quadcopter ini seimbang atau tidak, sensor yang biasa digunakan pada sebuah quadcopter adalah \emph{accelerometer} dan \emph{gyroscope} \cite{PraveenQuadcopter}.
 
-\subsection{Anti Gravitasi}
+\subsection{Pengolahan Citra}
 
-\lipsum[10]
+Pada sebuah komputer modern, citra yang ditemui pada dunia nyata tidak dapat secara langsung direpresentasikan oleh komputer. Dalam merubah bentuk citra di dunia nyata atau yang sering disebut citra analog perlu dilakukan perubahan dengan menggunakan sistem \emph{sampling}. Sistem \emph{sampling} ini berguna untuk mengubah citra analog menjadi M baris N kolom dan hasil ini dapat didefinisikan sebagai citra diskrit. Pertemuan titik antara M baris dan N kolom ini dinamakan dengan Piksel atau titik terkecil dari sebuah citra digital. Selain sistem \emph{sampling}, di dalam citra digital juga terdapat kuantisasi. Kuantitasi adalah sebuah pemberian nilai-nilai tertentu pada sebuah piksel di dalam citra digital. Nilai kuantisasi ini dapat merepresentasikan warna maupun kecerahan dari piksel di dalam sebuah citra digital.
+
+Dengan adanya piksel dan hasil nilai kuantisasi maka dapat dilakukan pengoperasian matematika pada nilai kuantisasi di seluruh piksel yang dimiliki sebuah citra digital. Salah satu cara pengolahan yang paling mudah adalah dengan menggunakan library yang bernama OpenCV \cite{KusumantoPengolahanCitra}. OpenCV mampu membantu dalam pemrosesan data nilai suatu gambar yang dimana di dalam komputer hasil dari \emph{sampling} dan kuantisasi ini direpresentasikan sebagai sebuah array. Pengolahan citra sering digunakan untuk mempersiapakan gambar sebelum diolah oleh program \emph{machine learning} sehingga menghasilkan hasil keputusan yang jauh lebih baik dibandingkan langsung memberikan gambar.
+
+\subsection{\emph{Deep Learning}}
+
+\emph{Deep Learning} adalah sebuah bidang di dalam dunia pembelajaran mesin. Di dalam \emph{Deep Learning} terdapat sebuah konsep yang disebut dengan \emph{Deep Neural Network}, yaitu sebuah gabungan dari beberapa program pembalajaran mesin ataupun model dalam menentukan sebuah keputusan yang menyerupai bagaimana otak manusia dalam mengambil keputusan. Keputusan ini diambil dengan menirukan bagaimana neuron dalam otak manusia melakukan identifikasi fenomena, melakukan penimbangan opsi serta menghasilkan sebuah keputusan atau konklusi \cite{IBMDeepLearning}. 
+
+Di dalam sebuah \emph{Neural Network} terdapat beberapa lapisan node yang mensimulasikan sebuah neuron di otak manusia. Setiap node ini tersambung satu sama lain. Apabila sebuah keluaran dari sebuah node melebihi nilai yang dibatasinya, maka node akan mengeluarkan data ke lapisan berikutnya sehingga mengaktifkan lapisan node berikutnya. Hal ini membuat \emph{Deep Neural Network} sangat cocok digunakan untuk permasalahan yang jauh lebih kompleks dibandingkan pembelajaran mesin tradisional. Dalam penggunaan \emph{Deep Neural Network} diperlukan daya komputer yang jauh lebih kuat dibandingkan pembelajaran mesin tradisional. Hal ini dikarenakan perlu dilakukan banyak perhitungan secara bersamaan dalam mengaktifkan banyak layer. Namun dengan pengembangan \emph{Compute Unit} atau CU khusus untuk pemroses pembelajaran mesin pada GPU (\emph{Graphic Processing Unit}), CPU (\emph{Central Processing Unit}) dan TPU (\emph{Tensor Processing Unit}) pada komputer membuat pengolahan layer secara langsung dan bersamaan semakin mudah dan cepat \cite{Goodfellow-et-al-2016}.
+
+Beberapa pengaplikasian utama dalam \emph{Deep Learning} untuk melakukan pengolahan gambar. Deep learning memungkinkan sebuah komputer untuk mengetahui gambar apa yang sedang diterimanya. \emph{Deep Learning} banyak digunakan oleh robot untuk melakukan pengenalan akan keadaan sekitarnya, contohnya adalah pada mobil otonom yang mampu mendeteksi jalan dengan kameranya. Selain melalui kamera, di mobil otonom juga terdapat \emph{Deep Learning} yang dapat menganalisis data, baik data yang berasal dari berbagai sensor seperti Lidar, GPS, maupun dataset seperti peraturan di jalan, rambu-rambu di jalan, sehingga dapat mengambil keputusan saat melakukan pengendalian otonomnya.
+
+\subsection{YOLO}
+YOLO atau \emph{You Only Look Once} adalah sebuah model pendeteksian objek yang paling mutakhir yang dikembangkan oleh Joseph Redmon, Santosh Divvala, Ross Girshick dan Ali Farhadi. YOLO adalah salah satu sistem yang mengimplementasikan \emph{Deep Learning} di dalam ranah pengolahan citra dan video \cite{RedmonYOLO}.
+\begin{figure} [H] \centering
+  % Nama dari file gambar yang diinputkan
+  \includegraphics[scale=0.5]{gambar/yolo_method.png}
+  % Keterangan gambar yang diinputkan
+  \caption{Proses Deteksi pada YOLO}
+  % Label referensi dari gambar yang diinputkan
+  \label{fig:yolo_detection}
+\end{figure}
+
+Pada sistem pendeteksian gambar sebelum YOLO, biasanya sistem bekerja dengan cara melakukan klasifikasi dan lokalisasi model terhadap gambar pada berbagai bagian di gambar dan juga pada berbagai skala, lalu dihasilkan nilai tinggi yang akan diklasifikasikan sebagai terdeteksi. Pada YOLO hal ini dilakukan satu buah pendeteksian ke satu \emph{neural network} secara penuh dan langsung (tanpa dibagi-bagi), kemudian \emph{Neural Network} YOLO akan membagi-bagi gambar menjadi bagian-bagian dan memprediksi bagian-bagian ini untuk diberikan batasan dan probabilitas. Batasan-batasan inilah yang kemudian akan ditimbang nilainya berdasarkan prediksi probabilitasnya. Dikarenakan penggunaan pendeteksian langsung ke seluruh gambar di awal membuat YOLO menjadi jauh lebih cepat dibandingkan dengan menggunakan sistem \emph{machine learning} tradisional seperti R-CNN atau bahkan Fast R-CNN. 
+
+
+% \subsection{\emph{Optical Flow}}
+
+% \subsection{\emph{Real Time Protocol}}
+
+\subsection{\emph{Quality of Service} (QoS)}
+
+QoS atau \emph{Quality of Service} adalah sebuah mekanisme dalam teknologi jaringan dimana dilakukan pengontrolan pada pengiriman data melalui jaringan untuk memastikan bahwa aplikasi atau hal penting yang ingin dilakukan melalui suatu jaringan tidak terputus atau terganggu walaupun dengan kapasitas jaringan yang kecil. Dengan adanya QoS, maka di dalam suatu sistem dapat diprioritaskan data apa yang harus selalu terkirim secara penuh dan tidak pernah menghilang atau terputus. Hal ini membuat ketika QoS digunakan maka suatu sistem dapat diatur seberapa \emph{bandwidth} data yang digunakan saat transmissi melalui jaringan dan seberapa lama data akan sampai ke ujung lainnya dari jaringan tersebut. Salah satu pengaplikasian QoS adalah di dalam gedung perusahaan pengiriman gambar video CCTV ke ruang server akan diprioritaskan dibandingkan data lain, dikarenakan ini berkaitan dengan keamanan gedung.
+
+Cara kerja QoS adalah dengan memberikan penanda pada paket data yang dikirimkan oleh sebuah aplikasi, dan kemudian membuat jalur khusus pada router untuk setiap aplikasi. Hal ini membuat setiap aplikasi dan data yang dimilikinya memiliki prioritas yang berbeda-beda satu dengan yang lain. Hal ini membuat \emph{bandwidth} untuk aplikasi dengan prioritas tinggi atau yang krusial akan pasti selalu tersedia. Selain itu QoS juga juga mengatur bagaimana suatu jaringan membagi \emph{resource} dan bagaimana dia mengontrol alokasi jalur pada suatu jaringan. Beberapa hal yang diperhatikan di dalam QoS adalah sebagai berikut :
+\begin{enumerate}
+  \item \emph{Bandwidth} : berapa banyak jumlah data yang dikirim dalam periode waktu (bps).
+  \item \emph{Delay} : waktu yang diperlukan dari saat paket data dikirimkan dan diterima (ms).
+  \item \emph{Loss} : persentase data yang hilang saat pengiriman.
+  \item \emph{Jitter} : perubahaan kecepatan yang terjadi di jaringan akibat macetnya transfer data.
+\end{enumerate}
+Keuntungan dari penggunaan QoS pada suatu jaringan adalah sebagai berikut :
+\begin{enumerate}
+  \item Penjaminan akan terus berjalanan aplikasi yang krusial atau penting pada jaringan.
+  \item Pengelolaan sumber daya internet yang bagus.
+  \item Penanggulangan hilangnya data.
+  \item Pengurangan latensi atau keterlambatan jaringan.
+  
+\end{enumerate}
+
+% \subsection{Hukum Newton}
+
+% % Contoh penggunaan referensi dari persamaan
+% Kemudian menjadi persamaan seperti pada persamaan \ref{eq:FirstLaw}.
+
+% % Contoh pembuatan persamaan
+% \begin{equation}
+%   % Label referensi dari persamaan yang dibuat
+%   \label{eq:FirstLaw}
+%   % Baris kode persamaan yang dibuat
+%   \sum \mathbf{F} = 0\; \Leftrightarrow\; \frac{\mathrm{d} \mathbf{v} }{\mathrm{d}t} = 0.
+% \end{equation}

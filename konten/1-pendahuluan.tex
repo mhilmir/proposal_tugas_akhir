@@ -3,25 +3,38 @@
 \section{Latar Belakang}
 
 % Ubah paragraf-paragraf berikut sesuai dengan latar belakang dari tugas akhir
-Pesatnya perkembangan roket yang merupakan \lipsum[2]
+Berdasarkan laporan Badan Pusat Statistik, jumlah kendaraan bermotor di Indonesia yang tersebar di 34 provinsi mencapai 148,3 juta unit hingga tahun 2022. Dari jumlah tersebut, kendaraan berjenis sepeda motor berjumlah 125,3 juta unit, mobil berjumlah 17,2 juta unit, dan sisanya kendaraan berjenis truk dan bus dengan jumlah kisaran 5,8 juta unit \cite{BPS2022}. Jumlah tersebut mengalami kenaikan yang signifikan dari tahun-tahun sebelumnya, yaitu sekitar 6,3 juta unit dari tahun 2021 \cite{BPS2021}. Sedangkan apabila dilihat dari tahun 2020, jumlah total kendaraan bermotor meningkat sekitar 12,1 juta unit \cite{BPS2020}.
 
-\lipsum[3]
+Kenaikan jumlah kendaraan yang terjadi di Indonesia tentu sangat berpengaruh pada aktivitas lalu lintas yang ada. Dampak langsung yang dirasakan adalah kemacetan. Hal ini karena semakin banyaknya volume kendaraan yang tidak seimbang dengan kapasitas infrastruktur untuk kendaraan, dalam hal ini adalah jalan, jembatan, dan sebagainya \cite{jurnalMacetSBY}. Pertambahan berbagai infrastruktur tersebut pastinya lebih lambat dibandingkan pertambahan jumlah kendaraan yang ada. Ditambah dengan masyarakat yang lebih memilih kendaraan pribadi dibandingkan dengan transportasi umum, menambah angka kemacetan di Indonesia. Sebagai contohnya, saat ini DKI Jakarta sebagai ibukota Indonesia menempati posisi 30 kota termacet di dunia. Data tersebut berdasarkan survey yang dilakukan TomTom Traffic Index pada tahun 2023 \cite{tomtom}. Oleh karena itu, pemantauan serta pengendalian arus lalu lintas menjadi hal yang penting dalam menghadapi kemacetan yang terjadi.
+
+Salah satu pilihan dalam melakukan pemantauan kendaraan pada lalu lintas adalah menggunakan kamera yang dipasang di tiang-tiang jalan. Namun, opsi ini memiliki kelemahan dalam hal luas area pantau yang dicakupnya. Kamera yang secara statis terpasang pada tiang-tiang jalan pastinya memiliki pandangan yang kurang lengkap terhadap kondisi jalanan. Hal ini akan memungkinkan terjadinya \emph{error} dari data yang terkumpul. selain itu, pemasangan infrastrukturnya juga memerlukan biaya yang besar \cite{GuptaSurveillanceDrone}.
+
+Drone merupakan pesawat tanpa awak yang bisa dikendalikan jarak jauh menggunakan \emph{remote control} serta dapat mentransmisikan berbagai data \emph{telemetry}, serta data gambar/video secara \emph{real-time}. Drone juga bisa dikendalikan oleh program komputer secara otomatis, yang mana biasa disebut \emph{autonomous drone}. Seiring dengan perkembangan teknologi drone yang signifikan, semakin banyak implementasi dari teknologi ini yang bisa dimanfaatkan. Saat ini, suatu drone yang berukuran kecil saja bisa memiliki kemampuan transmisi gambar atau video yang stabil, sistem lokalisasi yang mumpuni, serta daya tahan baterai yang relatif kuat. Dengan kelebihan-kelebihan tersebut, drone menjadi suatu alat yang banyak digunakan dalam berbagai bidang industri, seperti pemantauan atau \emph{monitoring}, penyemprotan pestisida, pemetaan lahan, fotografi, videografi, pengiriman barang, dan lain sebagainya. 
+
+Salah satu pemanfaatan drone yang saat ini tengah dikembangkan yaitu sebagai alat \emph{monitoring}, khususnya pada wilayah lalu lintas atau jalanan. Penggunaan drone dalam bidang ini memiliki berbagai kelebihan jika dibandingkan dengan kamera statis yang dipasang di tiang-tiang jalan. Hal ini karena drone dapat menangkap gambar/video dengan sudut pandang yang luas dan dinamis sehingga memungkinkan koleksi data yang lebih banyak \cite{LeeSmallDroneSurveillance}. Selain itu, mobilitas yang tinggi serta fleksibilitasnya juga menjadi kelebihan tersendiri untuk aktivitas \emph{monitoring} lalu lintas.
+
+Teknologi pengolahan citra dengan deep learning telah mengalami kemajuan pesat, memungkinkan analisis visual yang lebih akurat dan efisien. Algoritma \emph{deep learning}, seperti \emph{neural networks}, digunakan untuk mengenali pola, mendeteksi objek, dan mengklasifikasikan gambar dengan presisi tinggi. Dalam pemantauan lalu lintas dengan drone, teknologi ini dimanfaatkan untuk identifikasi pelanggaran, menghitung volume lalu lintas, menganalisis arus kendaraan, dan memantau kondisi jalan secara real-time. Dimana hal tersebut tentunya akan sangat bergantung pada tugas-tugas seperti deteksi, perhitungan, serta \emph{tracking} kendaraan \cite{AndreaIEEEAccess}. Drone yang dilengkapi dengan kamera yang mumpuni dan sistem pengolahan citra berbasis deep learning dapat memberikan data yang akurat dan cepat, sehingga dapat bermanfaat dalam pemantauan atau monitoring lalu lintas.
 
 \section{Rumusan Masalah}
 
 % Ubah paragraf berikut sesuai dengan rumusan masalah dari tugas akhir
-Berdasarkan hal yang telah dipaparkan di latar belakang, \lipsum[4]
+Pertambahan jumlah kendaraan yang tidak dibarengi dengan infrastruktur yang merata membuat munculnya masalah kemacetan, khususnya di daerah persimpangan lalu lintas. Hal ini mendorong diperlukannya suatu sistem monitoring kendaraan di persimpangan yang dapat mengestimasi jumlah antrian. Sistem ini juga harus bersifat fleksibel sehingga dapat melakukan monitoring di daerah-daerah yang belum memiliki infrastruktur yang memadai.
 
 \section{Batasan Masalah atau Ruang Lingkup}
 
-\lipsum[6]
+Penelitian ini berfokus pada deteksi kendaraan dalam bentuk antrian di daerah persimpangan dengan teknologi pengolahan citra, khususnya \emph{deep learning}. Proses komputasi (pengolahan citra) tidak dilakukan secara \emph{onboard} di drone, melainkan memanfaatkan komputer lain sebagai \emph{ground station}. Selain itu, aktivitas monitoring dilakukan di siang hari.  
 
 \section{Tujuan}
 
 % Ubah paragraf berikut sesuai dengan tujuan penelitian dari tugas akhir
-Tujuan dari penelitian ini adalah \lipsum[7][1-14]
+Tujuan dari penelitian ini adalah untuk membuat sistem monitoring yang dapat mengestimasi antrian pada persimpangan lalu lintas menggunakan teknologi drone. Selain itu, penelitian ini juga bertujuan merancang algoritma pengolahan citra berbasis \emph{deep learning} untuk mendeteksi dan menghitung jumlah antrian dengan akurat.
 
 \section{Manfaat}
 
 % Ubah paragraf berikut sesuai dengan tujuan penelitian dari tugas akhir
-Manfaat dari penelitian ini adalah \lipsum[8][1-14]
+Adapun berbagai manfaat yang bisa didapatkan dari penelitian ini antara lain:
+\begin{enumerate}
+    \item Dapat melakukan monitoring terkait seberapa ramai kondisi lalu lintas pada suatu persimpangan.
+    \item Data jumlah antrian yang didapatkan bisa dijadikan pertimbangan bagi otoritas lalu lintas untuk lebih efektif dalam mengelola dan mengatur lalu lintas, sehingga berguna dalam mengurangi kemacetan yang terjadi.
+    \item Membantu pengembangan konsep \emph{smart city}, karena data yang diberikan bisa bermanfaat pada sistem lalu lintas yang cerdas pada \emph{smart city}.
+\end{enumerate}
